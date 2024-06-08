@@ -13,15 +13,15 @@ This is a simple implementation of a magical arena game where two players fight 
 3.  For building the project, run the following command:
     - In linux and MacOS:
     ```bash
-    gradlew build
+    gradlew clean build
     ```
     - In Windows(CMD):
     ```bash
-    gradlew.bat build
+    gradlew.bat clean build
     ```
     - In Windows(Powershell):
     ```bash
-    .\gradlew.bat build
+    .\gradlew.bat clean build
     ```
 4.  For running the project, run the following command:
     - In linux and MacOS:
