@@ -10,17 +10,32 @@ public class Game {
     }
 
     public void start() {
-        while (playerA.isAlive() && playerB.isAlive()) {
-            takeTurn(playerA, playerB);
-            if (playerB.isAlive()) {
-                takeTurn(playerB, playerA);
+        Player firstAttacker;
+        Player secondAttacker;
+
+        if (playerA.getHealth() <= playerB.getHealth()) {
+            firstAttacker = playerA;
+            secondAttacker = playerB;
+        } else {
+            firstAttacker = playerB;
+            secondAttacker = playerA;
+        }
+
+        while (firstAttacker.isAlive() && secondAttacker.isAlive()) {
+            takeTurn(firstAttacker, secondAttacker);
+            if (secondAttacker.isAlive()) {
+                takeTurn(secondAttacker, firstAttacker);
             }
         }
 
-        if (playerA.isAlive()) {
-            System.out.println("Player A wins!");
+        if (firstAttacker.isAlive()) {
+            System.out.println(String.format(
+                    "Player %s wins!!",
+                    firstAttacker.getName()));
         } else {
-            System.out.println("Player B wins!");
+            System.out.println(String.format(
+                    "Player %s wins!!",
+                    secondAttacker.getName()));
         }
     }
 
