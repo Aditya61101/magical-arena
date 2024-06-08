@@ -1,6 +1,7 @@
 package magicalarena;
 
 public class Player {
+    private final String name;
     private int health;
     private final int strength;
     private final int attack;
@@ -8,18 +9,23 @@ public class Player {
 
     public String toString() {
         return "Player{" +
+                "name='" + name + '\'' +
                 "health=" + health +
                 ", strength=" + strength +
                 ", attack=" + attack +
-                ", diceRoller=" + diceRoller +
                 '}';
     }
 
-    public Player(int health, int strength, int attack, DiceRoller diceRoller) {
+    public Player(String name, int health, int strength, int attack, DiceRoller diceRoller) {
+        this.name = name;
         this.health = health;
         this.strength = strength;
         this.attack = attack;
         this.diceRoller = diceRoller;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getHealth() {

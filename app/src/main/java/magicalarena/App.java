@@ -12,21 +12,25 @@ public class App {
         System.out.println(new App().getGreetings());
 
         Scanner sc = new Scanner(System.in);
-        
+
         System.out.println("Enter attributes for Player A...");
         Player playerA = createPlayer(sc);
 
         System.out.println("Enter attributes for Player B...");
         Player playerB = createPlayer(sc);
 
-        System.out.println("Player A: " + playerA);
-        System.out.println("Player B: " + playerB);
-        
         sc.close();
+        Game game = new Game(playerA, playerB);
+        game.start();
+        // System.out.println("Player A: " + playerA);
+        // System.out.println("Player B: " + playerB);
+
     }
 
     private static Player createPlayer(Scanner sc) {
-        // int health = 0, strength = 0, attack = 0;
+        System.out.println("Enter player name: ");
+        String name = sc.next();
+
         System.out.println("Enter health: ");
         int health = sc.nextInt();
 
@@ -36,6 +40,6 @@ public class App {
         System.out.println("Enter attack: ");
         int attack = sc.nextInt();
         DiceRoller diceRoller = new SixFacedDiceRoller();
-        return new Player(health, strength, attack, diceRoller);
+        return new Player(name, health, strength, attack, diceRoller);
     }
 }
