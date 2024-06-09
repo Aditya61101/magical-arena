@@ -40,15 +40,32 @@ public class App {
     private static Player createPlayer(Scanner sc) {
         System.out.println("Enter player name: ");
         String name = sc.next();
+        while (name.isEmpty()) {
+            System.out.println("Name length should be greater than 0. Please try again...");
+            name = sc.next();
+        }
 
         System.out.println("Enter health: ");
         int health = sc.nextInt();
+        while(health <= 0) {
+            System.out.println("Health should be positive. Please try again...");
+            health = sc.nextInt();
+        }
 
         System.out.println("Enter strength: ");
         int strength = sc.nextInt();
+        while(strength <= 0) {
+            System.out.println("Strength should be positive. Please try again...");
+            strength = sc.nextInt();
+        }
 
         System.out.println("Enter attack: ");
         int attack = sc.nextInt();
+        while(attack <= 0) {
+            System.out.println("Attack should be positive. Please try again...");
+            attack = sc.nextInt();
+        }
+
         DiceRoller diceRoller = new SixFacedDiceRoller();
         return new Player(name, health, strength, attack, diceRoller);
     }
