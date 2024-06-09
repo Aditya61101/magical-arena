@@ -32,6 +32,14 @@ public class Player {
         return health;
     }
 
+    public int getStrength() {
+        return strength;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
     public boolean isAlive() {
         return health > 0;
     }

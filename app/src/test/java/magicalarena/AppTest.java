@@ -6,9 +6,42 @@ package magicalarena;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Scanner;
+
 class AppTest {
-    @Test void appHasAGreeting() {
+    @Test
+    void appHasAGreeting() {
         App classUnderTest = new App();
         assertNotNull(classUnderTest.getGreetings(), "app should have a greeting");
+    }
+
+    @Test
+    public void testCreatePlayerWithValidInput() {
+        String input = "TestPlayer\n100\n10\n20\n";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        Scanner sc = new Scanner(in);
+
+        Player player = App.createPlayer(sc);
+        assertEquals("TestPlayer", player.getName());
+        assertEquals(100, player.getHealth());
+        assertEquals(10, player.getStrength());
+        assertEquals(20, player.getAttack());
+
+        sc.close();
+    }
+
+    @Test
+    public void testCreatePlayerWithInvalidInput() {
+        String input = "TestPlayer\n-100\n10\n20\n";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        Scanner sc = new Scanner(in);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            App.createPlayer(sc);
+        });
+
+        sc.close();
     }
 }
