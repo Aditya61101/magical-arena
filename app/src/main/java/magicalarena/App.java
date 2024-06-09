@@ -32,21 +32,18 @@ public class App {
 
         System.out.println("Enter attributes for Player A...");
         Player playerA = createPlayer(sc);
-
+        sc.nextLine();
         System.out.println("Enter attributes for Player B...");
         Player playerB = createPlayer(sc);
 
         sc.close();
         Game game = new Game(playerA, playerB);
         game.start();
-        // System.out.println("Player A: " + playerA);
-        // System.out.println("Player B: " + playerB);
-
     }
 
     public static Player createPlayer(Scanner sc) {
         System.out.println("Enter player name: ");
-        String name = sc.next();
+        String name = sc.nextLine();
         if (name.isEmpty()) {
             throw new IllegalArgumentException("Name length should be greater than 0.");
         }
